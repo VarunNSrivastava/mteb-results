@@ -1,0 +1,13 @@
+{
+    "dataset_version": null,
+    "mteb_version": "0.0.2",
+    "test": {
+        "evaluation_time": 3176.61,
+        "ndcg_at_1": 0.51101,
+        "ndcg_at_3": 0.37672,
+        "ndcg_at_5": 0.39295,
+        "ndcg_at_10": 0.4089,
+        "ndcg_at_100": 0.43765,
+        "ndcg_at_1000": 0.45428
+    }
+}
