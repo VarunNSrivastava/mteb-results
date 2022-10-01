@@ -150,6 +150,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                             score = {metric: score}
                         for sub_metric, sub_score in score.items():
                             if any([x in sub_metric for x in SKIP_KEYS]): continue
+                            print("GOT", ds_name, res_dict, sub_score)
                             out.append({
                                 "dataset": ds_name,
                                 "metric": f"{metric}_{sub_metric}",
