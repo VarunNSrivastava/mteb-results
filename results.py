@@ -196,9 +196,9 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
         out = []
 
         for path in filepath:
-            ds_name = path.split("/")[-1]
             with io.open(path, "r", encoding="utf-8") as f:
                 res_dict = json.load(f)
+                ds_name = res_dict["mteb_dataset_name"]
                 split = "test"
                 if ds_name == "MSMARCO":
                     split = "dev" if "dev" in res_dict else "validation"
