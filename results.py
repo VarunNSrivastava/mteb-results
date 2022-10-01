@@ -26,45 +26,32 @@ SKIP_KEYS = ["std", "evaluation_time", "main_score", "threshold"]
 MODELS = [
     "LASER2",
     "LaBSE",
+    "all-MiniLM-L12-v2",
+    "all-MiniLM-L6-v2",
+    "all-mpnet-base-v2",
+    "allenai-specter",
+    "bert-base-uncased",
+    "contriever-base-msmarco",
+    "glove.6B.300d",
+    "gtr-t5-base",
+    "gtr-t5-large",
+    "gtr-t5-xl",
+    "gtr-t5-xxl",
+    "komninos",
+    "msmarco-bert-co-condensor",
+    "paraphrase-multilingual-MiniLM-L12-v2",
+    "paraphrase-multilingual-mpnet-base-v2",
+    "sentence-t5-base",
+    "sentence-t5-large",
+    "sentence-t5-xl",
+    "sentence-t5-xxl",
+    "sgpt-bloom-1b3-nli",
+    "sgpt-bloom-7b1-msmarco",
+    "sgpt-nli-bloom-1b3",
+    "sup-simcse-bert-base-uncased",
+    "text-similarity-ada-001",
+    "unsup-simcse-bert-base-uncased",
 ]
-"""    
-README.md
-SGPT-1.3B-weightedmean-msmarco-specb-bitfit
-SGPT-125M-weightedmean-msmarco-specb-bitfit
-SGPT-125M-weightedmean-msmarco-specb-bitfit-doc
-SGPT-125M-weightedmean-msmarco-specb-bitfit-que
-SGPT-125M-weightedmean-nli-bitfit
-SGPT-2.7B-weightedmean-msmarco-specb-bitfit
-SGPT-5.8B-weightedmean-msmarco-specb-bitfit
-SGPT-5.8B-weightedmean-msmarco-specb-bitfit-que
-SGPT-5.8B-weightedmean-nli-bitfit
-all-MiniLM-L12-v2
-all-MiniLM-L6-v2
-all-mpnet-base-v2
-allenai-specter
-bert-base-uncased
-contriever-base-msmarco
-glove.6B.300d
-gtr-t5-base
-gtr-t5-large
-gtr-t5-xl
-gtr-t5-xxl
-komninos
-msmarco-bert-co-condensor
-paraphrase-multilingual-MiniLM-L12-v2
-paraphrase-multilingual-mpnet-base-v2
-results.py
-sentence-t5-base
-sentence-t5-large
-sentence-t5-xl
-sentence-t5-xxl
-sgpt-bloom-1b3-nli
-sgpt-bloom-7b1-msmarco
-sgpt-nli-bloom-1b3
-sup-simcse-bert-base-uncased
-text-similarity-ada-001
-unsup-simcse-bert-base-uncased
-"""
 
 # Needs to be run whenever new files are added
 def get_paths():
