@@ -216,11 +216,10 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                             score = {metric: score}
                         for sub_metric, sub_score in score.items():
                             if any([x in sub_metric for x in SKIP_KEYS]): continue
-                            print("GOT", filepath, ds_name, res_dict, sub_score)
                             out.append({
                                 "dataset": ds_name,
                                 "metric": f"{metric}_{sub_metric}" if metric != sub_metric else metric,
                                 "score": sub_score * 100,
                             })
-        for idx, row in enumerate(out):
+        for idx, row in enumerate(sorted(out, key=lambda x: x["dataset"])):
             yield idx, row
