@@ -143,13 +143,13 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                 is_multilingual = True if any([x in res_dict for x in EVAL_LANGS]) else False
                 langs = res_dict.keys() if is_multilingual else ["en"]
                 for lang in langs:
+                    if lang in SKIP_KEYS: continue
                     test_result_lang = res_dict.get(lang) if is_multilingual else res_dict
                     for (metric, score) in test_result_lang.items():
                         if not isinstance(score, dict):
                             score = {metric: score}
                         for sub_metric, sub_score in score.items():
-                            if any([x in sub_metric for x in SKIP_KEYS]):
-                                continue
+                            if any([x in sub_metric for x in SKIP_KEYS]): continue
                             out.append({
                                 "dataset": ds_name,
                                 "metric": f"{metric}_{sub_metric}",
