@@ -167,7 +167,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
             description=_DESCRIPTION,
             features=datasets.Features(
                 {
-                    "dataset": datasets.Value("string"),
+                    "mteb_dataset_name": datasets.Value("string"),
                     "metric": datasets.Value("string"),
                     "score": datasets.Value("float"),
                 }
@@ -218,7 +218,6 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                         for sub_metric, sub_score in score.items():
                             if any([x in sub_metric for x in SKIP_KEYS]): continue
                             out.append({
-                                "mteb_dataset_name": ds_name,
                                 "mteb_dataset_name": ds_name,
                                 "metric": f"{metric}_{sub_metric}" if metric != sub_metric else metric,
                                 "score": sub_score * 100,
