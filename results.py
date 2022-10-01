@@ -223,5 +223,5 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                                 "metric": f"{metric}_{sub_metric}" if metric != sub_metric else metric,
                                 "score": sub_score * 100,
                             })
-        for idx, row in enumerate(sorted(out, key=lambda x: x["dataset"])):
+        for idx, row in enumerate(sorted(out, key=lambda x: x["mteb_dataset_name"])):
             yield idx, row
