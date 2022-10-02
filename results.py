@@ -1,8 +1,6 @@
 """MTEB Results"""
 
-import io
 import json
-
 import datasets
 
 
@@ -117,7 +115,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
         out = []
 
         for path in filepath:
-            with io.open(path, "r", encoding="utf-8") as f:
+            with open(path, "r", encoding="utf-8") as f:
                 res_dict = json.load(f)
                 ds_name = res_dict["mteb_dataset_name"]
                 split = "test"
