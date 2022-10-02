@@ -57,6 +57,9 @@ def get_paths():
     files = {}
     for model_dir in os.listdir("results"):
         results_model_dir = os.path.join("results", model_dir)
+        if not(os.path.isdir(results_model_dir)):
+            print(f"Skipping {results_model_dir}")
+            continue
         for res_file in os.listdir(results_model_dir):
             if res_file.endswith(".json"):
                 results_model_file = os.path.join(results_model_dir, res_file)
