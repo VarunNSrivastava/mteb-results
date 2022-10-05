@@ -47,6 +47,8 @@ MODELS = [
     "sgpt-bloom-7b1-msmarco",
     "sup-simcse-bert-base-uncased",
     "text-similarity-ada-001",
+    "text-search-ada-query-001",
+    "text-search-ada-doc-001",
     "unsup-simcse-bert-base-uncased",
 ]
 
