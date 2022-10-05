@@ -1,0 +1,9 @@
+{
+  "dataset_revision": null,
+  "mteb_version": "0.0.2",
+  "test": {
+    "evaluation_time": 1980.78,
+    "v_measure": 0.5809616944148139,
+    "v_measure_std": 0.10943244583277521
+  }
+}
