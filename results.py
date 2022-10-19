@@ -53,11 +53,12 @@ MODELS = [
     "sgpt-bloom-7b1-msmarco",
     "sup-simcse-bert-base-uncased",
     "text-similarity-ada-001",
+    "text-similarity-curie-001",    
+    "text-search-ada-doc-001",
     "text-search-ada-001",
     "text-search-babbage-001",
     "text-search-curie-001",
-    "text-search-davinci-001",             
-    "text-search-ada-doc-001",
+    "text-search-davinci-001",
     "unsup-simcse-bert-base-uncased",
 ]
 
