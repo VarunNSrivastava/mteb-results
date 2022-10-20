@@ -18,9 +18,7 @@ _CITATION = """@article{muennighoff2022mteb,
 }
 """
 
-_DESCRIPTION = """\
-Results on MTEB
-"""
+_DESCRIPTION = """Results on MTEB"""
 
 URL = "https://huggingface.co/datasets/mteb/results/resolve/main/paths.json"
 VERSION = datasets.Version("1.0.1")
