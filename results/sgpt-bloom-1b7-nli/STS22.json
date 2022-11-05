@@ -1,6 +1,7 @@
 {
-  "dataset_version": "6d1ba47164174a496b7fa5d3569dae26a6813b80",
+  "dataset_revision": "6d1ba47164174a496b7fa5d3569dae26a6813b80",
   "mteb_version": "0.0.2",
+  "mteb_dataset_name": "STS22",  
   "test": {
     "ar": {
       "cos_sim": {

@@ -1,6 +1,7 @@
 {
-  "dataset_version": null,
+  "dataset_revision": "072a486a144adf7f4479a4a0dddb2152e161e1ea",
   "mteb_version": "0.0.2",
+  "mteb_dataset_name": "MassiveIntentClassification",  
   "test": {
     "af": {
       "accuracy": 0.4176193678547411,
