@@ -1,0 +1,15 @@
+{
+  "dataset_revision": "31efe3c427b0bae9c22cbb560b8f15491cc6bed7",
+  "mteb_dataset_name": "MassiveIntentClassification",
+  "mteb_version": "1.0.1",
+  "test": {
+    "en": {
+      "accuracy": 0.701546738399462,
+      "accuracy_stderr": 0.017699014528516823,
+      "f1": 0.6759342809572279,
+      "f1_stderr": 0.01495992009622014,
+      "main_score": 0.701546738399462
+    },
+    "evaluation_time": 116.06
+  }
+}
