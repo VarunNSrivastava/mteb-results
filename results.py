@@ -51,6 +51,7 @@ MODELS = [
     "sgpt-bloom-1b7-nli",
     "sgpt-bloom-7b1-msmarco",
     "sup-simcse-bert-base-uncased",
+    "text-embedding-ada-002",
     "text-similarity-ada-001",
     "text-similarity-babbage-001",    
     "text-similarity-curie-001",
