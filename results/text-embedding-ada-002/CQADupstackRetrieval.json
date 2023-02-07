@@ -1,6 +1,6 @@
 {
     "dataset_revision": null,
-    "mteb_dataset_name": "CQADupstackWordpressRetrieval",
+    "mteb_dataset_name": "CQADupstackRetrieval",
     "mteb_version": "1.0.1",
     "test": {
         "evaluation_time": 9771.900000000001,
