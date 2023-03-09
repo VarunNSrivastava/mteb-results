@@ -1,5 +1,5 @@
 {
-    "dataset_revision": null,
+    "dataset_revision": "6062aefc120bfe8ece5897809fb2e53bfe0d128c",
     "mteb_dataset_name": "NQ",
     "mteb_version": "1.0.1",
     "test": {
