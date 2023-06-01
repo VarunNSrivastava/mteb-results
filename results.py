@@ -35,6 +35,12 @@ MODELS = [
     "allenai-specter",
     "bert-base-uncased",
     "contriever-base-msmarco",
+    "cross-en-de-roberta-sentence-transformer",
+    "gbert-base",
+    "gbert-large",
+    "gelectra-base",
+    "gelectra-large",
+    "gottbert-base",
     "glove.6B.300d",
     "gtr-t5-base",
     "gtr-t5-large",
@@ -53,7 +59,7 @@ MODELS = [
     "sup-simcse-bert-base-uncased",
     "text-embedding-ada-002",
     "text-similarity-ada-001",
-    "text-similarity-babbage-001",    
+    "text-similarity-babbage-001",
     "text-similarity-curie-001",
     "text-similarity-davinci-001",
     "text-search-ada-doc-001",
@@ -62,6 +68,8 @@ MODELS = [
     "text-search-curie-001",
     "text-search-davinci-001",
     "unsup-simcse-bert-base-uncased",
+    "use-cmlm-multilingual",
+    "xlm-roberta-large",
 ]
 
 # Needs to be run whenever new files are added
