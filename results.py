@@ -36,6 +36,7 @@ MODELS = [
     "bert-base-uncased",
     "contriever-base-msmarco",
     "cross-en-de-roberta-sentence-transformer",
+    "distiluse-base-multilingual-cased-v2",
     "gbert-base",
     "gbert-large",
     "gelectra-base",
