@@ -1,0 +1,15 @@
+{
+  "dataset_revision": "7ebf0b4caa7b2ae39698a889de782c09e6f5ee56",
+  "mteb_dataset_name": "DalajClassification",
+  "mteb_version": "1.0.3.dev0",
+  "test": {
+    "accuracy": 0.5003378378378378,
+    "accuracy_stderr": 0.014880639323292307,
+    "ap": 0.5003902780548716,
+    "ap_stderr": 0.0073418619974873756,
+    "evaluation_time": 57.78,
+    "f1": 0.4987202282686436,
+    "f1_stderr": 0.01519993053587878,
+    "main_score": 0.5003378378378378
+  }
+}

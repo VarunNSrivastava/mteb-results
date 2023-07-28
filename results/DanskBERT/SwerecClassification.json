@@ -1,0 +1,13 @@
+{
+  "dataset_revision": "3c62f26bafdc4c4e1c16401ad4b32f0a94b46612",
+  "mteb_dataset_name": "SwerecClassification",
+  "mteb_version": "1.0.3.dev0",
+  "test": {
+    "accuracy": 0.619482421875,
+    "accuracy_stderr": 0.020710321291315156,
+    "evaluation_time": 143.39,
+    "f1": 0.5558447995104121,
+    "f1_stderr": 0.021773450519163632,
+    "main_score": 0.619482421875
+  }
+}

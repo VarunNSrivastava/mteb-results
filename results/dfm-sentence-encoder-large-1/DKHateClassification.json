@@ -1,0 +1,15 @@
+{
+  "dataset_revision": "59d12749a3c91a186063c7d729ec392fda94681c",
+  "mteb_dataset_name": "DKHateClassification",
+  "mteb_version": "1.0.3.dev0",
+  "test": {
+    "accuracy": 0.6319148936170212,
+    "accuracy_stderr": 0.046025303308468324,
+    "ap": 0.1693716829277915,
+    "ap_stderr": 0.027604186807989504,
+    "evaluation_time": 111.33,
+    "f1": 0.5204047139843642,
+    "f1_stderr": 0.034102688729471656,
+    "main_score": 0.6319148936170212
+  }
+}

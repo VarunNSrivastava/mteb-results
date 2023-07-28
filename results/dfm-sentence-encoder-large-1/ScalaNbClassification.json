@@ -1,0 +1,15 @@
+{
+  "dataset_revision": "237111a078ad5a834a55c57803d40bbe410ed03b",
+  "mteb_dataset_name": "ScalaNbClassification",
+  "mteb_version": "1.0.3.dev0",
+  "test": {
+    "accuracy": 0.62685546875,
+    "accuracy_stderr": 0.015920964058674877,
+    "ap": 0.5821979066251348,
+    "ap_stderr": 0.01214977374776373,
+    "evaluation_time": 97.37,
+    "f1": 0.6234950635607823,
+    "f1_stderr": 0.018014238232907147,
+    "main_score": 0.62685546875
+  }
+}

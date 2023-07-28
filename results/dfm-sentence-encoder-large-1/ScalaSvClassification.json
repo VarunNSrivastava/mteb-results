@@ -1,0 +1,15 @@
+{
+  "dataset_revision": "1b48e3dcb02872335ff985ff938a054a4ed99008",
+  "mteb_dataset_name": "ScalaSvClassification",
+  "mteb_version": "1.0.3.dev0",
+  "test": {
+    "accuracy": 0.576806640625,
+    "accuracy_stderr": 0.04010632331631002,
+    "ap": 0.5460665751898299,
+    "ap_stderr": 0.024480535699729616,
+    "evaluation_time": 97.37,
+    "f1": 0.5750900787345138,
+    "f1_stderr": 0.04076555572153807,
+    "main_score": 0.576806640625
+  }
+}
