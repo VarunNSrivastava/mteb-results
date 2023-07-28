@@ -1,6 +1,6 @@
 {
   "dataset_revision": "3c62f26bafdc4c4e1c16401ad4b32f0a94b46612",
-  "mteb_dataset_name": "SwerecClassification",
+  "mteb_dataset_name": "SweRecClassification",
   "mteb_version": "1.0.3.dev0",
   "test": {
     "accuracy": 0.589794921875,
