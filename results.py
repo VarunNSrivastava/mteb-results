@@ -27,8 +27,6 @@ EVAL_LANGS = ['af', 'afr-eng', 'am', 'amh-eng', 'ang-eng', 'ar', 'ar-ar', 'ara-e
 SKIP_KEYS = ["std", "evaluation_time", "main_score", "threshold"]
 
 MODELS = [
-    "LASER2",
-    "LaBSE",
     "all-MiniLM-L12-v2",
     "all-MiniLM-L6-v2",
     "all-mpnet-base-v2",
@@ -54,6 +52,8 @@ MODELS = [
     "gtr-t5-xl",
     "gtr-t5-xxl",
     "komninos",
+    "LaBSE",
+    "LASER2",
     "msmarco-bert-co-condensor",
     "nb-bert-base",
     "nb-bert-large",
