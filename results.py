@@ -1,6 +1,7 @@
 """MTEB Results"""
 
 import json
+
 import datasets
 
 
@@ -91,28 +92,27 @@ MODELS = [
     "xlm-roberta-large",
 ]
 
+
 # Needs to be run whenever new files are added
 def get_paths():
-    import json, os
-    files = {}
+    import collections, os
+    files = collections.defaultdict(list)
     for model_dir in os.listdir("results"):
         results_model_dir = os.path.join("results", model_dir)
-        if not(os.path.isdir(results_model_dir)):
+        if not os.path.isdir(results_model_dir):
             print(f"Skipping {results_model_dir}")
             continue
         for res_file in os.listdir(results_model_dir):
             if res_file.endswith(".json"):
                 results_model_file = os.path.join(results_model_dir, res_file)
-                files.setdefault(model_dir, [])            
                 files[model_dir].append(results_model_file)
-    with open(f"paths.json", "w") as f:
+    with open("paths.json", "w") as f:
         json.dump(files, f)
     return files
 
 
 class MTEBResults(datasets.GeneratorBasedBuilder):
     """MTEBResults"""
-
 
     BUILDER_CONFIGS = [
         datasets.BuilderConfig(
@@ -140,9 +140,9 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
 
     def _split_generators(self, dl_manager):
         path_file = dl_manager.download_and_extract(URL)
-        with open(path_file, "r") as f:
+        with open(path_file) as f:
             files = json.load(f)
-        
+
         downloaded_files = dl_manager.download_and_extract(files[self.config.name])
         return [
             datasets.SplitGenerator(
@@ -153,12 +153,12 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
 
     def _generate_examples(self, filepath):
         """This function returns the examples in the raw (text) form."""
-        logger.info("Generating examples from {}".format(filepath))
-        
+        logger.info(f"Generating examples from {filepath}")
+
         out = []
 
         for path in filepath:
-            with open(path, "r", encoding="utf-8") as f:
+            with open(path, encoding="utf-8") as f:
                 res_dict = json.load(f)
                 ds_name = res_dict["mteb_dataset_name"]
                 split = "test"
@@ -168,16 +168,16 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                     print(f"Skipping {ds_name} as split {split} not present.")
                     continue
                 res_dict = res_dict.get(split)
-                is_multilingual = True if any([x in res_dict for x in EVAL_LANGS]) else False
+                is_multilingual = any(x in res_dict for x in EVAL_LANGS)
                 langs = res_dict.keys() if is_multilingual else ["en"]
                 for lang in langs:
                     if lang in SKIP_KEYS: continue
                     test_result_lang = res_dict.get(lang) if is_multilingual else res_dict
-                    for (metric, score) in test_result_lang.items():
+                    for metric, score in test_result_lang.items():
                         if not isinstance(score, dict):
                             score = {metric: score}
                         for sub_metric, sub_score in score.items():
-                            if any([x in sub_metric for x in SKIP_KEYS]): continue
+                            if any(x in sub_metric for x in SKIP_KEYS): continue
                             out.append({
                                 "mteb_dataset_name": ds_name,
                                 "eval_language": lang if is_multilingual else "",
