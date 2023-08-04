@@ -95,7 +95,7 @@ MODELS = [
 
 # Needs to be run whenever new files are added
 def get_paths():
-    import collections, os
+    import collections, json, os
     files = collections.defaultdict(list)
     for model_dir in os.listdir("results"):
         results_model_dir = os.path.join("results", model_dir)
