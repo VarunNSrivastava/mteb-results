@@ -84,7 +84,7 @@ MODELS = [
     "sgpt-bloom-7b1-msmarco",
     "sup-simcse-bert-base-uncased",
     "text2vec-base-chinese",
-    "text2vec-large-chinese"
+    "text2vec-large-chinese",
     "text-embedding-ada-002",
     "text-similarity-ada-001",
     "text-similarity-babbage-001",
@@ -171,7 +171,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                 res_dict = json.load(f)
                 ds_name = res_dict["mteb_dataset_name"]
                 split = "test"
-                if ds_name in ["AFQMC", "CmedqaRetrieval", "Cmnli", "CovidRetrieval", "DuRetrieval", "EcomRetrieval", "IFlyTek", "JDReview", "MedicalRetrieval", "MultilingualSentiment", "MMarcoReranking", "MMarcoRetrieval", "MSMARCO", "Ocnli", "OnlineShopping", "T2Reranking", "T2Retrieval", "TNews", "VideoRetrieval",]:
+                if ds_name in ["AFQMC", "CmedqaRetrieval", "Cmnli", "CovidRetrieval", "DuRetrieval", "EcomRetrieval", "IFlyTek", "JDReview", "MedicalRetrieval", "MultilingualSentiment", "MmarcoReranking", "MMarcoRetrieval", "MSMARCO", "Ocnli", "OnlineShopping", "T2Reranking", "T2Retrieval", "TNews", "VideoRetrieval",]:
                     split = "dev" if "dev" in res_dict else "validation"
                 if (split not in res_dict) and (ds_name in ["JDReview"]):
                     split = "test"
