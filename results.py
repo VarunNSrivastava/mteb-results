@@ -173,6 +173,8 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                 split = "test"
                 if ds_name in ["AFQMC", "CmedqaRetrieval", "Cmnli", "CovidRetrieval", "DuRetrieval", "EcomRetrieval", "IFlyTek", "JDReview", "MedicalRetrieval", "MultilingualSentiment", "MmarcoReranking", "MMarcoRetrieval", "MSMARCO", "Ocnli", "OnlineShopping", "T2Reranking", "T2Retrieval", "TNews", "VideoRetrieval",]:
                     split = "dev" if "dev" in res_dict else "validation"
+                elif ds_name in ["DanishPoliticalCommentsClassification"]:
+                    split = "train"
                 if (split not in res_dict) and (ds_name in ["JDReview"]):
                     split = "test"
                 if split not in res_dict:
