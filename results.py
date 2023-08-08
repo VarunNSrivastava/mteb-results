@@ -172,11 +172,14 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                 ds_name = res_dict["mteb_dataset_name"]
                 split = "test"
                 if ds_name in ["AFQMC", "CmedqaRetrieval", "Cmnli", "CovidRetrieval", "DuRetrieval", "EcomRetrieval", "IFlyTek", "JDReview", "MedicalRetrieval", "MultilingualSentiment", "MmarcoReranking", "MMarcoRetrieval", "MSMARCO", "Ocnli", "OnlineShopping", "T2Reranking", "T2Retrieval", "TNews", "VideoRetrieval", "Waimai",]:
-                    split = "dev" if "dev" in res_dict else "validation"
+                    if "test" in res_dict:
+                        split = "test"
+                    elif "dev" in res_dict:
+                        split = "dev"
+                    elif "validation" in res_dict:
+                        split = "validation"
                 elif ds_name in ["DanishPoliticalCommentsClassification"]:
                     split = "train"
-                if (split not in res_dict) and (ds_name in ["JDReview", "Waimai"]):
-                    split = "test"
                 if split not in res_dict:
                     print(f"Skipping {ds_name} as split {split} not present.")
                     continue
