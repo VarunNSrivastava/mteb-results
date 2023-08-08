@@ -171,8 +171,10 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                 res_dict = json.load(f)
                 ds_name = res_dict["mteb_dataset_name"]
                 split = "test"
-                if ds_name in ["AFQMC", "CmedqaRetrieval", "Cmnli", "CovidRetrieval", "DuRetrieval", "EcommRetrieval", "IFlyTek", "JDReview", "MedicalRetrieval", "MultilingualSentiment", "MMarcoReranking", "MMarcoRetrieval", "MSMARCO", "Ocnli", "OnlineShopping", "T2Reranking", "T2Retrieval", "TNews", "VideoRetrieval",]:
+                if ds_name in ["AFQMC", "CmedqaRetrieval", "Cmnli", "CovidRetrieval", "DuRetrieval", "EcomRetrieval", "IFlyTek", "JDReview", "MedicalRetrieval", "MultilingualSentiment", "MMarcoReranking", "MMarcoRetrieval", "MSMARCO", "Ocnli", "OnlineShopping", "T2Reranking", "T2Retrieval", "TNews", "VideoRetrieval",]:
                     split = "dev" if "dev" in res_dict else "validation"
+                if (split not in res_dict) and (ds_name in ["JDReview"]):
+                    split = "test"
                 if split not in res_dict:
                     print(f"Skipping {ds_name} as split {split} not present.")
                     continue
