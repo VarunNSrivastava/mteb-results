@@ -5,6 +5,6 @@
     "map": 0.12481971498981873,
     "mrr": 0.11227777777777778
   },
-  "mteb_dataset_name": "MmarcoReranking",
+  "mteb_dataset_name": "MMarcoReranking",
   "mteb_version": "1.0.2"
 }

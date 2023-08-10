@@ -1,0 +1,20 @@
+{
+  "dataset_revision": null,
+  "mteb_dataset_name": "AFQMC",
+  "mteb_version": "1.1.1.dev0",
+  "test": {
+    "cos_sim": {
+      "pearson": NaN,
+      "spearman": NaN
+    },
+    "euclidean": {
+      "pearson": NaN,
+      "spearman": NaN
+    },
+    "evaluation_time": 4.59,
+    "manhattan": {
+      "pearson": NaN,
+      "spearman": NaN
+    }
+  }
+}
