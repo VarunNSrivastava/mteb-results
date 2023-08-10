@@ -171,7 +171,7 @@ class MTEBResults(datasets.GeneratorBasedBuilder):
                 res_dict = json.load(f)
                 ds_name = res_dict["mteb_dataset_name"]
                 split = "test"
-                if ds_name in ["AFQMC", "CmedqaRetrieval", "Cmnli", "CovidRetrieval", "DuRetrieval", "EcomRetrieval", "IFlyTek", "JDReview", "MedicalRetrieval", "MultilingualSentiment", "MmarcoReranking", "MMarcoRetrieval", "MSMARCO", "Ocnli", "OnlineShopping", "T2Reranking", "T2Retrieval", "TNews", "VideoRetrieval", "Waimai",]:
+                if ds_name in ["AFQMC", "CmedqaRetrieval", "Cmnli", "CovidRetrieval", "DuRetrieval", "EcomRetrieval", "IFlyTek", "JDReview", "MedicalRetrieval", "MultilingualSentiment", "MMarcoReranking", "MMarcoRetrieval", "MSMARCO", "Ocnli", "OnlineShopping", "T2Reranking", "T2Retrieval", "TNews", "VideoRetrieval", "Waimai",]:
                     if "test" in res_dict:
                         split = "test"
                     elif "dev" in res_dict:
