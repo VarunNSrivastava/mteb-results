@@ -1,0 +1,20 @@
+{
+  "dataset_revision": null,
+  "mteb_dataset_name": "CDSC-R",
+  "mteb_version": "1.1.1.dev0",
+  "test": {
+    "cos_sim": {
+      "pearson": 0.8766410121793534,
+      "spearman": 0.8855543269482894
+    },
+    "euclidean": {
+      "pearson": 0.9020694887466815,
+      "spearman": 0.8945284726534887
+    },
+    "evaluation_time": 42.76,
+    "manhattan": {
+      "pearson": 0.8999582005325903,
+      "spearman": 0.8921830770761684
+    }
+  }
+}
