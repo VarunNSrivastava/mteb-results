@@ -83,6 +83,8 @@ MODELS = [
     "sgpt-bloom-1b7-nli",
     "sgpt-bloom-7b1-msmarco",
     "sup-simcse-bert-base-uncased",
+    "st-polish-paraphrase-from-distilroberta",
+    "st-polish-paraphrase-from-mpnet",
     "text2vec-base-chinese",
     "text2vec-large-chinese",
     "text-embedding-ada-002",
