@@ -1,23 +1,17 @@
-
 import json
-
-from datasets import load_dataset
-import gradio as gr
-from huggingface_hub import get_hf_file_metadata, HfApi, hf_hub_download, hf_hub_url
-from huggingface_hub.repocard import metadata_load
-import pandas as pd
-
-import os
 import shutil
 
+import pandas as pd
+from datasets import load_dataset
+from huggingface_hub import get_hf_file_metadata, HfApi, hf_hub_download, hf_hub_url
+from huggingface_hub.repocard import metadata_load
 from huggingface_hub.utils._errors import GatedRepoError
-
-from model_list import EXTERNAL_MODELS, EXTERNAL_MODEL_TO_LINK, EXTERNAL_MODEL_TO_SIZE, EXTERNAL_MODEL_TO_SEQLEN, \
-    EXTERNAL_MODEL_TO_DIM, MODELS_TO_SKIP
 
 from dataset_list import TASK_LIST_EN, TASK_LIST_CLASSIFICATION, \
     TASK_LIST_PAIR_CLASSIFICATION, TASK_LIST_SUMMARIZATION, TASK_LIST_CLUSTERING, \
     TASK_LIST_RERANKING, TASK_LIST_RETRIEVAL, TASK_LIST_STS, add_task
+from model_list import EXTERNAL_MODELS, EXTERNAL_MODEL_TO_LINK, EXTERNAL_MODEL_TO_SIZE, EXTERNAL_MODEL_TO_SEQLEN, \
+    EXTERNAL_MODEL_TO_DIM, MODELS_TO_SKIP
 
 
 def get_dim_seq_size(model):
@@ -34,7 +28,8 @@ def get_dim_seq_size(model):
         config = json.load(open(config_path))
         if not dim:
             dim = config.get("hidden_dim", config.get("hidden_size", config.get("d_model", "")))
-        seq = config.get("n_positions", config.get("max_position_embeddings", config.get("n_ctx", config.get("seq_length", ""))))
+        seq = config.get("n_positions",
+                         config.get("max_position_embeddings", config.get("n_ctx", config.get("seq_length", ""))))
     # Get model file size without downloading
     if "pytorch_model.bin" in filenames:
         url = hf_hub_url(model.modelId, filename="pytorch_model.bin")
@@ -77,18 +72,17 @@ def make_clickable_model(model_name, link=None):
     )
 
 
-
 def add_lang(examples):
-    if not(examples["eval_language"]):
+    if not (examples["eval_language"]):
         examples["mteb_dataset_name_with_lang"] = examples["mteb_dataset_name"]
     else:
         examples["mteb_dataset_name_with_lang"] = examples["mteb_dataset_name"] + f' ({examples["eval_language"]})'
     return examples
 
 
-
 def add_rank(df):
-    cols_to_rank = [col for col in df.columns if col not in ["Model", "Model Size (GB)", "Embedding Dimensions", "Sequence Length"]]
+    cols_to_rank = [col for col in df.columns if
+                    col not in ["Model", "Model Size (GB)", "Embedding Dimensions", "Sequence Length"]]
     if len(cols_to_rank) == 1:
         df.sort_values(cols_to_rank[0], ascending=False, inplace=True)
     else:
@@ -104,10 +98,11 @@ def add_rank(df):
 for model in EXTERNAL_MODELS:
     ds = load_dataset("mteb/results", model)
     # For local debugging:
-    #, download_mode='force_redownload', verification_mode="no_checks")
+    # , download_mode='force_redownload', verification_mode="no_checks")
     ds = ds.map(add_lang)
     ds = ds.map(add_task)
-    base_dict = {"Model": make_clickable_model(model, link=EXTERNAL_MODEL_TO_LINK.get(model, "https://huggingface.co/spaces/mteb/leaderboard"))}
+    base_dict = {"Model": make_clickable_model(model, link=EXTERNAL_MODEL_TO_LINK.get(model,
+                                                                                      "https://huggingface.co/spaces/mteb/leaderboard"))}
     # For now only one metric per task - Could add more metrics later on
     for task, metric in TASK_TO_METRIC.items():
         ds_dict = ds.filter(lambda x: (x["mteb_task"] == task) and (x["metric"] == metric))["test"].to_dict()
@@ -171,7 +166,7 @@ def get_mteb_data(tasks=["Clustering"], langs=[], datasets=[], fillna=True, add_
         elif langs:
             task_results = [sub_res for sub_res in meta["model-index"][0]["results"] if
                             (sub_res.get("task", {}).get("type", "") in tasks) and (
-                                        sub_res.get("dataset", {}).get("config", "default") in ("default", *langs))]
+                                    sub_res.get("dataset", {}).get("config", "default") in ("default", *langs))]
         else:
             task_results = [sub_res for sub_res in meta["model-index"][0]["results"] if
                             (sub_res.get("task", {}).get("type", "") in tasks)]
@@ -269,14 +264,14 @@ def get_mteb_average():
     DATA_OVERALL.fillna("", inplace=True)
 
     COLUMNS = ["Rank", "Model", "Model Size (GB)", "Embedding Dimensions", "Sequence Length",
-                                 f"Average ({len(TASK_LIST_EN)} datasets)",
-                                 f"Classification Average ({len(TASK_LIST_CLASSIFICATION)} datasets)",
-                                 f"Clustering Average ({len(TASK_LIST_CLUSTERING)} datasets)",
-                                 f"Pair Classification Average ({len(TASK_LIST_PAIR_CLASSIFICATION)} datasets)",
-                                 f"Reranking Average ({len(TASK_LIST_RERANKING)} datasets)",
-                                 f"Retrieval Average ({len(TASK_LIST_RETRIEVAL)} datasets)",
-                                 f"STS Average ({len(TASK_LIST_STS)} datasets)",
-                                 f"Summarization Average ({len(TASK_LIST_SUMMARIZATION)} dataset)"]
+               f"Average ({len(TASK_LIST_EN)} datasets)",
+               f"Classification Average ({len(TASK_LIST_CLASSIFICATION)} datasets)",
+               f"Clustering Average ({len(TASK_LIST_CLUSTERING)} datasets)",
+               f"Pair Classification Average ({len(TASK_LIST_PAIR_CLASSIFICATION)} datasets)",
+               f"Reranking Average ({len(TASK_LIST_RERANKING)} datasets)",
+               f"Retrieval Average ({len(TASK_LIST_RETRIEVAL)} datasets)",
+               f"STS Average ({len(TASK_LIST_STS)} datasets)",
+               f"Summarization Average ({len(TASK_LIST_SUMMARIZATION)} dataset)"]
 
     DATA_OVERALL = DATA_OVERALL[COLUMNS]
     DATA_OVERALL = DATA_OVERALL[DATA_OVERALL.iloc[:, 5:].ne("").any(axis=1)]
@@ -287,13 +282,9 @@ def get_mteb_average():
 COLUMNS, DATA_OVERALL = get_mteb_average()
 
 
-
 def print_line(character='-'):
     columns, _ = shutil.get_terminal_size((80, 20))
     print(character * columns)
-
-
-print_line()
 
 
 def to_float(val):
@@ -302,15 +293,20 @@ def to_float(val):
     except:
         return float('nan')  # Convert problematic values to NaN
 
+
+### Drop NAs
+
+
 for col in COLUMNS[6:]:
     DATA_OVERALL[col] = DATA_OVERALL[col].apply(to_float)
 
 DATA_OVERALL.dropna(inplace=True)
 
-
 DATA_OVERALL['Average tasks'] = DATA_OVERALL[COLUMNS[6:]].mean(axis=1)
 
 DATA_OVERALL.insert(2, 'Average tasks', DATA_OVERALL.pop('Average tasks'))
+
+print_line()
 
 
 def kendall_tau(list1, list2):
@@ -319,7 +315,7 @@ def kendall_tau(list1, list2):
     concordant = 0
     discordant = 0
     for i in range(n):
-        for j in range(i+1, n):
+        for j in range(i + 1, n):
             list1_order = (list1[i] - list1[j])
             list2_order = (list2[i] - list2[j])
             if (list1_order * list2_order) > 0:
@@ -365,5 +361,7 @@ def get_most_similar_task_to_average(data, tasks):
 
     return most_similar_task, max_tau
 
+
 most_similar_task, tau_value = get_most_similar_task_to_average(DATA_OVERALL, COLUMNS[6:])
-print(f"\nThe task most similar to the average ranking is '{most_similar_task}' with a Kendall's Tau of {tau_value:.4f}.")
+print(
+    f"\nThe task most similar to the average ranking is '{most_similar_task}' with a Kendall's Tau of {tau_value:.4f}.")
